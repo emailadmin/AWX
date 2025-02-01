@@ -1,0 +1,41 @@
+---
+- name: Collect system information and check availability
+  hosts: all
+  gather_facts: yes
+
+  tasks:
+    - name: Ping the host
+      ping:
+      register: ping_result
+
+    - name: Display ping result
+      debug:
+        msg: "Ping to {{ inventory_hostname }}: SUCCESS"
+      when: ping_result.ping is defined
+
+    - name: Get system information
+      setup:
+
+    - name: Display system name
+      debug:
+        msg: "System: {{ ansible_facts['ansible_distribution'] }} {{ ansible_facts['ansible_distribution_version'] }}"
+
+    - name: Display kernel version
+      debug:
+        msg: "Kernel: {{ ansible_facts['ansible_kernel'] }}"
+
+    - name: Display CPU architecture
+      debug:
+        msg: "Architecture: {{ ansible_facts['ansible_architecture'] }}"
+
+    - name: Display uptime
+      debug:
+        msg: "Uptime: {{ ansible_facts['ansible_uptime_seconds'] }} seconds"
+
+    - name: Display total memory
+      debug:
+        msg: "Total Memory: {{ ansible_facts['ansible_memtotal_mb'] }} MB"
+
+    - name: Display all system facts
+      debug:
+        var: ansible_facts
