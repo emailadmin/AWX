@@ -18,23 +18,23 @@
 
     - name: Display system name
       debug:
-        msg: "System: {{ ansible_facts['ansible_distribution'] }} {{ ansible_facts['ansible_distribution_version'] }}"
+        msg: "System: {{ ansible_distribution }} {{ ansible_distribution_version }}"
 
     - name: Display kernel version
       debug:
-        msg: "Kernel: {{ ansible_facts['ansible_kernel'] }}"
+        msg: "Kernel: {{ ansible_kernel }}"
 
     - name: Display CPU architecture
       debug:
-        msg: "Architecture: {{ ansible_facts['ansible_architecture'] }}"
+        msg: "Architecture: {{ ansible_architecture }}"
 
     - name: Display uptime
       debug:
-        msg: "Uptime: {{ ansible_facts['ansible_uptime_seconds'] }} seconds"
+        msg: "Uptime: {{ ansible_uptime_seconds }} seconds"
 
     - name: Display total memory
       debug:
-        msg: "Total Memory: {{ ansible_facts['ansible_memtotal_mb'] }} MB"
+        msg: "Total Memory: {{ ansible_memtotal_mb }} MB"
 
     - name: Display all system facts
       debug:
